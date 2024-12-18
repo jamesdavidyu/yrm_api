@@ -1,9 +1,22 @@
 from django.db import models
-from django.contrib.auth.models import User
+import uuid
 
-class User(User):
-    first_name = ''
-    last_name = ''
-    email = ''
-    _is_staff = False
-    _is_superuser = False
+class Name(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=255)
+    input_at = models.DateTimeField(auto_now_add=True)
+
+class Category(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    category = models.CharField(max_length=255)
+    input_at = models.DateTimeField(auto_now_add=True)
+
+class Note(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    note = models.CharField(max_length=255)
+    input_at = models.DateTimeField(auto_now_add=True)
+
+class Hour(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    hour = models.DecimalField(max_digits=4, decimal_places=2)
+    input_at = models.DateTimeField(auto_now_add=True)
