@@ -50,6 +50,6 @@ def login(request):
 @api_view(['GET'])
 @google_auth_required
 def hours(request):
-    data = models.Hour.objects.all().order_by('hour')
+    data = models.Hour.objects.all().order_by('hour_value')
     serializer = serializers.HoursSerializer(data, many=True)
     return Response(serializer.data)
