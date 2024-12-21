@@ -15,6 +15,7 @@ from . import serializers
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.db import connection
+from .decorators import google_auth_required
 
 def index(request):
     now = datetime.now()
@@ -45,3 +46,10 @@ def login(request):
         return Response(serializer.data, status=status.HTTP_200_OK)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['GET'])
+@google_auth_required
+def hours(request):
+    data = models.Hour.objects.all().order_by('hour')
+    serializer = serializers.HoursSerializer(data, many=True)
+    return Response({'hours': serializer.data})

@@ -40,3 +40,8 @@ class LoginSerializer(serializers.Serializer):
             User.objects.filter(username=username).update(last_login=datetime.now())
             data['user'] = user
             return data
+
+class HoursSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Hour
+        fields = '__all__'

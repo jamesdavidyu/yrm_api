@@ -18,5 +18,5 @@ class Note(models.Model):
 
 class Hour(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    hour = models.DecimalField(max_digits=4, decimal_places=2)
+    hour = models.DecimalField(max_digits=4, decimal_places=2, unique=True)
     input_at = models.DateTimeField(auto_now_add=True)

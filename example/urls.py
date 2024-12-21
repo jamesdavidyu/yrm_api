@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from example.views import index
 from example.views import signup
 from example.views import login
+from example.views import hours
 
 load_dotenv()
 prefix = os.getenv('PREFIX')
@@ -13,5 +14,6 @@ prefix = os.getenv('PREFIX')
 urlpatterns = [
     path('', index),
     path(prefix + 'auth/signup/', signup),
-    path(prefix + 'auth/login/', login)
+    path(prefix + 'auth/login/', login),
+    path(prefix + 'hours/auth/', hours)
 ]
