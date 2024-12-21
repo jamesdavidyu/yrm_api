@@ -52,4 +52,4 @@ def login(request):
 def hours(request):
     data = models.Hour.objects.all().order_by('hour')
     serializer = serializers.HoursSerializer(data, many=True)
-    return Response({'hours': serializer.data})
+    return Response(serializer.data)
