@@ -3,12 +3,14 @@ import uuid
 
 class Name(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=255)
+    name_value = models.CharField(max_length=50)
+    name_label = models.CharField(max_length=50)
     input_at = models.DateTimeField(auto_now_add=True)
 
 class Category(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    category = models.CharField(max_length=255)
+    category_value = models.CharField(max_length=50)
+    category_label = models.CharField(max_length=10)
     input_at = models.DateTimeField(auto_now_add=True)
 
 class Note(models.Model):
